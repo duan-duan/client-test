@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisCluster;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Jreids {
+public class JeidsTest {
 
 
     public static void main(String[] args) {
