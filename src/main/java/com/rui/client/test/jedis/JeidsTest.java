@@ -22,8 +22,10 @@ public class JeidsTest {
 
         Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
         //Jedis Cluster will attempt to discover cluster nodes automatically
-        jedisClusterNodes.add(new HostAndPort("10.60.58.194", 7000));
-        JedisCluster jc = new JedisCluster(jedisClusterNodes,2000,2000,3,"ldalkfwie2981dls",new GenericObjectPoolConfig());
+        jedisClusterNodes.add(new HostAndPort("10.60.54.229", 7000));
+//        jedisClusterNodes.add(new HostAndPort("10.60.58.194", 7000));
+//        JedisCluster jc = new JedisCluster(jedisClusterNodes,2000,2000,3,"ldalkfwie2981dls",new GenericObjectPoolConfig());
+        JedisCluster jc = new JedisCluster(jedisClusterNodes,2000,2000,3,"8grvTlOPImGRdgPp",new GenericObjectPoolConfig());
         jc.set("foo1", "bar1");
         String value1 = jc.get("foo1");
         System.out.println(value1);
