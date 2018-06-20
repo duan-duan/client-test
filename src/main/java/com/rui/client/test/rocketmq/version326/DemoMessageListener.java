@@ -7,14 +7,18 @@ import java.util.List;
 
 public class DemoMessageListener extends AbstractMessageListener {
 
+
     @Override
-    public boolean uniqueCheck(String id) {
-        return false;
+    public <T> void execute(T t) {
+
     }
 
     @Override
-    public String execute(List<MessageExt> messages, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
+    public MessageListener uniqueCheck(List<MessageExt> messages, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
         System.out.printf(Thread.currentThread().getName() + " Receive New Messages: " + messages + "%n");
-        return null;
+        MessageListener obj = new MessageListener();
+        obj.setFlag(true);
+        obj.setT(new Object());
+        return obj;
     }
 }
