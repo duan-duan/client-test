@@ -18,13 +18,15 @@ public class Consumer {
         //设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费<br>
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
         //指定nameServer的地址
-        consumer.setNamesrvAddr("10.0.74.198:9876;10.0.74.199:9876");
+        consumer.setNamesrvAddr("10.75.217.75:9876;10.75.217.76:9876;10.75.236.141:9876;10.75.236.140:9876");
         //指定订阅的topic及tag表达式
         consumer.subscribe("TopicTest", "*");
 
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
                                                             ConsumeConcurrentlyContext context) {
+
+                System.out.println("Tread name:"+Thread.currentThread().getName());
                 MessageExt messageExt = msgs.get(0);
                 System.out.println(String.format("Custome message [%s],tagName[%s]",
                         new String(messageExt.getBody()),

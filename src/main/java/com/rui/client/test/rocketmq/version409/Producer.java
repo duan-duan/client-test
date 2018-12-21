@@ -10,20 +10,21 @@ import java.util.concurrent.Semaphore;
 
 public class Producer {
 
-    private static int count = 100;
+    private static int count = 10;
 
     public static void main(String[] args) throws Exception {
         // 设置生产者组名
         DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
         // 指定nameServer的地址
-        producer.setNamesrvAddr("127.0.0.1:9876");
+        producer.setNamesrvAddr("10.75.236.141:9876;10.75.236.140:9876");
+
         // 启动实例
         producer.start();
 
         final Semaphore semaphore = new Semaphore(0);
 
         for (int i = 0; i < count; i++) {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             Message message = new Message("TopicTest",
                     "test_tag",
                     ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
